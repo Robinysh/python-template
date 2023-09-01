@@ -1,0 +1,35 @@
+jobs:
+  superlint:
+    name: Megalinter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+      - uses: pdm-project/setup-pdm@v3
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          git submodule update --init --recursive --force --remote
+          pdm sync
+          git submodule deinit --all -f
+      - env:
+          DISABLE_LINTERS: PYTHON_PYLINT,PYTHON_PYRIGHT,PYTHON_RUFF,PYTHON_MYPY
+          ENABLE: ACTION,BASH,DOCKERFILE,JSON,MAKEFILE,MARKDOWN,PYTHON
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /
+          LOG_LEVEL: INFO
+          REPORT_OUTPUT_FOLDER: /tmp/megalinter-reports
+        name: Lint Code Base
+        uses: oxsecurity/megalinter/flavors/python@latest
+name: Linters
+'on':
+  pull_request:
+    branches:
+      - main
+      - dev
+  push:
+    branches:
+      - main
+      - dev
+permissions: read-all
