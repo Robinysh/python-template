@@ -34,6 +34,7 @@ lint-format-yaml.shell = "git ls-files '*.yml' '*.yaml' | xargs -t yq -i -S -Y -
 lint-format.composite = ["lint-format-python", "lint-format-gitignore", "lint-format-yaml"]
 pdm-flake8.shell = "git ls-files '*.py' | xargs -t pdm run flake8"
 pdm-pylint.shell = "git ls-files '*.py' | xargs -t pdm run pylint"
+lint-format.env = {LC_ALL="C"}
 lint.composite = ["pdm-flake8", "pdm-pylint"]
 start.shell = "if [ -e .env ]; then pdm run python src/template/main.py; else echo 'Make a copy of .env from .env.sample before you start.'; fi"
 pre_install.shell = "export CMAKE_ARGS='-DLLAMA_CUBLAS=on' FORCE_CMAKE=1"
