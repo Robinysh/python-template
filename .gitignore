@@ -66,7 +66,6 @@ ipython_config.py
 lib/
 lib64/
 local_settings.py
-models
 nosetests.xml
 parts/
 pip-delete-this-directory.txt
