@@ -1,6 +1,6 @@
 {
   "project_name": "",
-  "package_name": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_') }}",
+  "package_name": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower() }}",
   "friendly_name": "{{ cookiecutter.project_name.replace('-', ' ').title() }}",
   "version": "1.0.0",
   "project_description": "",
