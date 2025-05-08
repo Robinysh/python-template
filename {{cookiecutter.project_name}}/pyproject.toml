@@ -1,8 +1,8 @@
 
 [project]
-name = "template"
+name = "{{ cookiecutter.package_name }}"
 version = "1.0.0"
-description = ""
+description = "{{ cookiecutter.project_description }}"
 authors = [
     {name = "Robin Yuen Shing Hei", email = "robin.ysh@gmail.com"},
 ]
@@ -15,6 +15,7 @@ dependencies = [
     "autoflake>=2.2.0",
     "pylint>=2.17.5",
     "yq>=3.2.3",
+    "typer>=0.15.3",
 ]
 requires-python = ">=3.10"
 readme = "README.md"
@@ -37,5 +38,5 @@ pdm-flake8.shell = "git ls-files '*.py' | xargs -t pdm run flake8"
 pdm-pylint.shell = "git ls-files '*.py' | xargs -t pdm run pylint"
 lint-format.env = {LC_ALL="C"}
 lint.composite = ["pdm-flake8", "pdm-pylint"]
-start.shell = "if [ -e .env ]; then pdm run python src/template/main.py; else echo 'Make a copy of .env from .env.sample before you start.'; fi"
+start.shell = "if [ -e .env ]; then pdm run python src/{{cookiecutter.package_name}}/main.py; else echo 'Make a copy of .env from .env.sample before you start.'; fi"
 pre_install.shell = "export CMAKE_ARGS='-DLLAMA_CUBLAS=on' FORCE_CMAKE=1"

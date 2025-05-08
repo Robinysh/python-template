@@ -1,9 +1,7 @@
-# Python Template
+# CookieCutter for python projects
 
 ## Setup
 
-`make`
-
-## Run
-
-`pdm start`
+```bash
+cookiecutter git@github.com:Robinysh/python-template.git
+```
