@@ -2,8 +2,8 @@
 
 ## Setup
 
-`make`
+`make install-dev`
 
-## Run
+## Linting and formatting
 
-`pdm start`
+`uv run pre-commit run --all-files`

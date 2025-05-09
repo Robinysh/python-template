@@ -1,7 +1,3 @@
-"""
-CLI entry point for project
-"""
-
 import typer
 
 app = typer.Typer()

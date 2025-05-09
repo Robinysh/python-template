@@ -1,7 +1,11 @@
 install:
-	git config core.hooksPath .githooks
 	- git submodule update --init --recursive --remote --force
-	pdm sync
+	uv sync --no-dev
+
+install-dev:
+	- git submodule update --init --recursive --remote --force
+	uv sync
+	uv run pre-commit install
 
 reset:
 	git fetch
