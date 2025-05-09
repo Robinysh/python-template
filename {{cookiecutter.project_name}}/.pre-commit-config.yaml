@@ -11,7 +11,6 @@ repos:
           - id: check-toml
           - id: check-yaml
           - id: debug-statements
-          - id: detect-aws-credentials
           - id: detect-private-key
           - id: end-of-file-fixer
           - id: pretty-format-json
@@ -35,3 +34,7 @@ repos:
       rev: 25.1.0
       hooks:
           - id: black
+    - repo: https://github.com/astral-sh/uv-pre-commit
+      rev: 0.7.3
+      hooks:
+          - id: uv-lock
