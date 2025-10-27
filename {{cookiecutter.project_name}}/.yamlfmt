@@ -3,7 +3,7 @@ formatter:
   type: basic
   retain_line_breaks: true
   disallow_anchors: false
-  max_line_length: 100
+  max_line_length: 120
   scan_folded_as_literal: false
   indentless_arrays: false
   drop_merge_tag: false
